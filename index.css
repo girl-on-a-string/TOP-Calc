@@ -55,6 +55,7 @@ body {
 
 #screen, #decimal, .operator, .num, .others {
     border-radius: 10px;
+    border: none;
 }
 
 #decimal, .operator, .num, .others {
