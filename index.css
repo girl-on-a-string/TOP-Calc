@@ -1,0 +1,185 @@
+:root {
+    --main: #B56576;
+    --secondary: #EAAC8B;
+    --tert: #E56B6F;
+    --bg: #355070; 
+    --screen: lightblue;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: darkgray;
+    padding: 30px;
+}
+
+#calc {
+    display: grid;
+    gap: 10px;
+    grid-template-areas: 
+        'screen screen screen screen'
+        'screen screen screen screen'
+        'clear posneg percent divide'
+        'seven eight nine multi'
+        'four five six minus'
+        'one two three plus'
+        'zero zero decimal equals'
+    ;
+
+    background-color: var(--bg);
+    width: 700px;
+    height: 1000px;
+    padding: 20px;
+    border-radius: 20px;
+    filter: drop-shadow(1px 0px 6px #000000);
+}
+
+/* multiples and colors */
+
+.others {
+    background-color: var(--secondary);
+}
+
+.num, #decimal {
+    background-color: var(--main);
+}
+
+.operator {
+    background-color: var(--tert);
+}
+
+#screen {
+    background-color: var(--screen);
+}
+
+#screen, #decimal, .operator, .num, .others {
+    border-radius: 10px;
+}
+
+#decimal, .operator, .num, .others {
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* screen */
+
+#screen {
+    grid-area: screen;
+}
+
+/* clear */
+
+#clear {
+    grid-area: clear;
+}
+
+/* pos and neg */
+
+#posneg {
+    grid-area: posneg;
+}
+
+/* percent */
+
+#percent {
+    grid-area: percent;
+}
+
+/* devide */
+
+#divide {
+    grid-area: divide;
+}
+
+/* seven */
+
+#seven {
+    grid-area: seven;
+}
+
+/* eight */
+
+#eight {
+    grid-area: eight;
+}
+
+/* nine */
+
+#nine {
+    grid-area: nine;
+}
+
+/* multiply */
+
+#multiply {
+    grid-area: multi;
+}
+
+/* four */
+
+#four {
+    grid-area: four;
+}
+
+/* five */
+
+#five {
+    grid-area: five;
+}
+
+/* six */
+
+#six {
+    grid-area: six;
+}
+
+/* minus */
+
+#minus {
+    grid-area: minus;
+}
+
+/* one */
+
+#one {
+    grid-area: one;
+}
+
+/* two */
+
+#two {
+    grid-area: two;
+}
+
+/* three */
+
+#three {
+    grid-area: three;
+}
+
+/* plus */
+
+#plus {
+    grid-area: plus;
+}
+
+/* zero */
+
+#zero {
+    grid-area: zero;
+}
+
+/* decimial */
+
+#decimal {
+    grid-area: decimal;
+}
+
+/* equals */
+
+#equals {
+    grid-area: equals;
+}
