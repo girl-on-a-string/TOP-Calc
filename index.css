@@ -6,6 +6,10 @@
     --screen: lightblue;
 }
 
+* {
+    background-color: darkgray;
+}
+
 body {
     display: flex;
     justify-content: center;
@@ -16,7 +20,6 @@ body {
 
 #calc {
     display: grid;
-    gap: 10px;
     grid-template-areas: 
         'screen screen screen screen'
         'screen screen screen screen'
@@ -27,35 +30,26 @@ body {
         'zero zero decimal equals'
     ;
 
-    background-color: var(--bg);
     width: 700px;
     height: 1000px;
-    padding: 20px;
-    border-radius: 20px;
     filter: drop-shadow(1px 0px 6px #000000);
+    border: 1px solid black;
 }
 
 /* multiples and colors */
 
-.others {
-    background-color: var(--secondary);
-}
-
-.num, #decimal {
-    background-color: var(--main);
-}
-
-.operator {
-    background-color: var(--tert);
-}
-
-#screen-display {
-    background-color: var(--screen);
-}
-
 #screen-display, #decimal, .operator, .num, .others {
-    border-radius: 10px;
-    border: none;
+    border: 1px solid black;
+}
+
+#screen-display:hover, #decimal:hover, .operator:hover, .num:hover, .others:hover {
+    background-color: #000000;
+    color: darkgray;
+    transition: .2s;
+}
+
+.operator[value="="]:hover {
+    color: yellow;
 }
 
 #decimal, .operator, .num, .others {
