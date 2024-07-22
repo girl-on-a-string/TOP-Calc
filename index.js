@@ -34,6 +34,21 @@ btn.map(btn => {
         // console.log(e.target.innerText);
 
         switch (e.target.innerText) {
+            case "AC":
+                screen.innerText = "";
+                break;
+            case "+/-":
+                signs();
+            case "/":
+                divide();
+            case "x":
+                multiply();
+            case "-":
+                subtract();
+            case "+":
+                add();
+            case "=":
+                operate();
             default:
                 screen.innerText += e.target.innerText;
         }
@@ -48,6 +63,14 @@ function populate () {
 }
 
 //other buttons
+
+//positive and negative
+
+function signs () {
+
+}
+
+//decimal btn
 
 function decimal () {
 
