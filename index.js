@@ -17,10 +17,14 @@ const decimalBtn = document.getElementById("decimal");
 const container = document.getElementById("calc");
 let num = document.querySelectorAll(".num");
 
+let num1 = 0;
+let num2 = 0;
+
 //let value = document.getElementsByClassName("num").value;
 
 num.forEach(num => {
     num.addEventListener("click", () => {
+        
         console.log("click");
     });
 });
@@ -65,6 +69,6 @@ function divide () {
 //operate
 
 function operate () {
-    
     console.log("operate");
+    populate();
 }
