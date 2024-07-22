@@ -19,10 +19,12 @@ const decimalBtn = document.getElementById("decimal");
 const container = document.getElementById("calc");
 let num = Array.from(document.querySelectorAll(".num"));
 
+let operator = Array.from(document.querySelectorAll(".operator"));
+
 let num1 = 0;
 let num2 = 0;
 
-//
+//display numbers on screen
 
 num.map(num => {
     num.addEventListener("click", (e) => {
@@ -54,6 +56,14 @@ function decimal () {
 //number buttons
 
 //operator buttons
+
+//show operations on screen
+
+operator.map(operator => {
+    operator.addEventListener("click", (e) => {
+        screen.innerText += e.target.innerText;
+    });
+})
 
 //add 
 
