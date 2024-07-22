@@ -1,6 +1,8 @@
 //variables
 
 const screen = document.getElementById("screen-display");
+const problemDisplay = document.getElementById("problem");
+const solutionDisplay = document.getElementById("solution");
 
 const clearBtn = document.getElementById("clear");
 const posnegBtn = document.getElementById("posneg");
@@ -15,17 +17,24 @@ const equalsBtn = document.getElementById("equals");
 const decimalBtn = document.getElementById("decimal");
 
 const container = document.getElementById("calc");
-let num = document.querySelectorAll(".num");
+let num = Array.from(document.querySelectorAll(".num"));
 
 let num1 = 0;
 let num2 = 0;
 
-//let value = document.getElementsByClassName("num").value;
+//
 
-num.forEach(num => {
-    num.addEventListener("click", () => {
-        
-        console.log("click");
+num.map(num => {
+    num.addEventListener("click", (e) => {
+        // console.log("click");
+        // console.log(e);
+        // console.log(e.target);
+        // console.log(e.target.innerText);
+
+        switch (e.target.innerText) {
+            default:
+                screen.innerText += e.target.innerText;
+        }
     });
 });
 
@@ -33,9 +42,14 @@ num.forEach(num => {
 
 function populate () {
     console.log("populate");
+
 }
 
 //other buttons
+
+function decimal () {
+
+}
 
 //number buttons
 
@@ -45,30 +59,34 @@ function populate () {
 
 function add (num1, num2) {
     console.log("add");
-    console.log(num1 + num2);
+    return num1 + num2;
 }
 
 //subtract
 
-function subtract () {
+function subtract (num1, num2) {
     console.log("subtract");
+    return num1 - num2;
 }
 
 //multiply 
 
-function multiply () {
+function multiply (num1, num2) {
     console.log("multiply");
+    return num1 * num2;
 }
 
 //divide
 
-function divide () {
+function divide (num1, num2) {
     console.log("divide");
+    return num1 / num2;
 }
 
 //operate
 
-function operate () {
+function operate (num1, num2) {
     console.log("operate");
+    
     populate();
 }
