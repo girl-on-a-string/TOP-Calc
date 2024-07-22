@@ -1,7 +1,34 @@
+//variables
+
+const screen = document.getElementById("screen-display");
+
+const clearBtn = document.getElementById("clear");
+const posnegBtn = document.getElementById("posneg");
+const percentBtn = document.getElementById("percent");
+
+const divisionBtn = document.getElementById("divide");
+const multiplicationBtn = document.getElementById("multiply");
+const subtractBtn = document.getElementById("minus");
+const additionBtn = document.getElementById("plus");
+const equalsBtn = document.getElementById("equals");
+
+const decimalBtn = document.getElementById("decimal");
+
+const container = document.getElementById("calc");
+let num = document.querySelectorAll(".num");
+
+//let value = document.getElementsByClassName("num").value;
+
+num.forEach(num => {
+    num.addEventListener("click", () => {
+        console.log("click");
+    });
+});
+
 //populate screen 
 
 function populate () {
-    
+    console.log("populate");
 }
 
 //other buttons
@@ -12,8 +39,9 @@ function populate () {
 
 //add 
 
-function add () {
+function add (num1, num2) {
     console.log("add");
+    console.log(num1 + num2);
 }
 
 //subtract
@@ -37,5 +65,6 @@ function divide () {
 //operate
 
 function operate () {
-
+    
+    console.log("operate");
 }

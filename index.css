@@ -49,11 +49,11 @@ body {
     background-color: var(--tert);
 }
 
-#screen {
+#screen-display {
     background-color: var(--screen);
 }
 
-#screen, #decimal, .operator, .num, .others {
+#screen-display, #decimal, .operator, .num, .others {
     border-radius: 10px;
     border: none;
 }
@@ -67,7 +67,7 @@ body {
 
 /* screen */
 
-#screen {
+#screen-display {
     grid-area: screen;
 }
 

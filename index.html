@@ -3,84 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
+    <title>My Calculator</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <div id="calc">
-        <button id="screen">
+        <button id="screen-display">
 
         </button>
 
         <!-- first line -->
 
-        <button id="clear" class="others">
+        <button id="clear" class="others" value="AC" type="reset">
             AC
         </button>
-        <button id="posneg" class="others">
+        <button id="posneg" class="others" value="+/-" type="button">
             +/-
         </button>
-        <button id="percent" class="others">
+        <button id="percent" class="others" value="%" type="button">
             %
         </button>
-        <button id="divide" class="operator" onclick="divide()">
+        <button id="divide" class="operator" value="/" type="button" onclick="divide()">
             /
         </button>
 
         <!-- second line -->
 
-        <button id="seven" class="num">
+        <button id="seven" class="num" value="7" type="button">
             7
         </button>
-        <button id="eight" class="num">
+        <button id="eight" class="num" value="8" type="button">
             8
         </button>
-        <button id="nine" class="num">
+        <button id="nine" class="num" value="9" type="button">
             9
         </button>
-        <button id="multiply" class="operator" onclick="multiply()">
+        <button id="multiply" class="operator" value="*" type="button" onclick="multiply()">
             x
         </button>
 
         <!-- third line -->
 
-        <button id="four" class="num">
+        <button id="four" class="num" value="4" type="button">
             4
         </button>
-        <button id="five" class="num">
+        <button id="five" class="num" value="5" type="button">
             5
         </button>
-        <button id="six" class="num">
+        <button id="six" class="num" value="6" type="button">
             6
         </button>
-        <button id="minus" class="operator" onclick="subtract()">
+        <button id="minus" class="operator" value="-" type="button" onclick="subtract()">
             -
         </button>
 
         <!-- fourth line -->
 
-        <button id="one" class="num">
+        <button id="one" class="num" value="1" type="button">
             1
         </button>
-        <button id="two" class="num">
+        <button id="two" class="num" value="2" type="button">
             2
         </button>
-        <button id="three" class="num">
+        <button id="three" class="num" value="3" type="button">
             3
         </button>
-        <button id="plus" class="operator" onclick="add()">
+        <button id="plus" class="operator" value="+" type="button" onclick="add()">
             +
         </button>
 
         <!-- fifth line -->
 
-        <button id="zero" class="num">
+        <button id="zero" class="num" value="0" type="button">
             0
         </button>
-        <button id="decimal">
+        <button id="decimal" value="." type="button">
             .
         </button>
-        <button id="equals" class="operator">
+        <button id="equals" class="operator" value="=" type="submit" onclick="operate()">
             =
         </button>
     </div>
