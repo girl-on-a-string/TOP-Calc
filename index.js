@@ -17,7 +17,7 @@ const equalsBtn = document.getElementById("equals");
 const decimalBtn = document.getElementById("decimal");
 
 const container = document.getElementById("calc");
-let num = Array.from(document.querySelectorAll(".num"));
+let btn = Array.from(document.querySelectorAll(".btn"));
 
 let operator = Array.from(document.querySelectorAll(".operator"));
 
@@ -26,8 +26,8 @@ let num2 = 0;
 
 //display numbers on screen
 
-num.map(num => {
-    num.addEventListener("click", (e) => {
+btn.map(btn => {
+    btn.addEventListener("click", (e) => {
         // console.log("click");
         // console.log(e);
         // console.log(e.target);
@@ -56,14 +56,6 @@ function decimal () {
 //number buttons
 
 //operator buttons
-
-//show operations on screen
-
-operator.map(operator => {
-    operator.addEventListener("click", (e) => {
-        screen.innerText += e.target.innerText;
-    });
-})
 
 //add 
 
