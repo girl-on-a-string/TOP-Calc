@@ -54,16 +54,15 @@ btn.map(btn => {
                 add();
                 break;
             case "=":
-                console.log("hello?");
-                //operate();
+                operate();
                 break;
             default:
-                screen.innerText += e.target.innerText;
+                problemDisplay.innerText += e.target.innerText;
         }
     });
 });
 
-//populate screen 
+//populate screen with answer
 
 function populate () {
     console.log("populate");
@@ -75,7 +74,11 @@ function populate () {
 //positive and negative
 
 function signs () {
+    if (problemDisplay.innerText > 0) {
 
+    } else {
+
+    }
 }
 
 //decimal btn
