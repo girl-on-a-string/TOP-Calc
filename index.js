@@ -36,19 +36,27 @@ btn.map(btn => {
         switch (e.target.innerText) {
             case "AC":
                 screen.innerText = "";
+                console.log("cleared");
                 break;
             case "+/-":
                 signs();
+                break;
             case "/":
                 divide();
+                break;
             case "x":
                 multiply();
+                break;
             case "-":
                 subtract();
+                break;
             case "+":
                 add();
+                break;
             case "=":
-                operate();
+                console.log("hello?");
+                //operate();
+                break;
             default:
                 screen.innerText += e.target.innerText;
         }

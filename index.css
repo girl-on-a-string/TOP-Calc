@@ -1,11 +1,3 @@
-:root {
-    --main: #B56576;
-    --secondary: #EAAC8B;
-    --tert: #E56B6F;
-    --bg: #355070; 
-    --screen: lightblue;
-}
-
 * {
     background-color: darkgray;
 }
