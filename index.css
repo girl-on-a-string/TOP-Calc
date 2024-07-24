@@ -34,7 +34,7 @@ body {
     border: 1px solid black;
 }
 
-#screen-display:hover, #decimal:hover, .operator:hover, .num:hover, .others:hover {
+#decimal:hover, .operator:hover, .num:hover, .others:hover {
     background-color: #000000;
     color: darkgray;
     transition: .2s;

@@ -4,125 +4,47 @@ const screen = document.getElementById("screen-display");
 const problemDisplay = document.getElementById("problem");
 const solutionDisplay = document.getElementById("solution");
 
-const clearBtn = document.getElementById("clear");
-const posnegBtn = document.getElementById("posneg");
-const percentBtn = document.getElementById("percent");
+const btn = document.querySelectorAll("btn");
 
-const divisionBtn = document.getElementById("divide");
-const multiplicationBtn = document.getElementById("multiply");
-const subtractBtn = document.getElementById("minus");
-const additionBtn = document.getElementById("plus");
-const equalsBtn = document.getElementById("equals");
+//operate function
 
-const decimalBtn = document.getElementById("decimal");
-
-const container = document.getElementById("calc");
-let btn = Array.from(document.querySelectorAll(".btn"));
-
-let operator = Array.from(document.querySelectorAll(".operator"));
-
-let num1 = 0;
-let num2 = 0;
-
-//display numbers on screen
-
-btn.map(btn => {
-    btn.addEventListener("click", (e) => {
-        // console.log("click");
-        // console.log(e);
-        // console.log(e.target);
-        // console.log(e.target.innerText);
-
-        switch (e.target.innerText) {
-            case "AC":
-                screen.innerText = "";
-                console.log("cleared");
-                break;
-            case "+/-":
-                signs();
-                break;
-            case "/":
-                divide();
-                break;
-            case "x":
-                multiply();
-                break;
-            case "-":
-                subtract();
-                break;
-            case "+":
-                add();
-                break;
-            case "=":
-                operate();
-                break;
-            default:
-                problemDisplay.innerText += e.target.innerText;
-        }
-    });
-});
-
-//populate screen with answer
-
-function populate () {
-    console.log("populate");
-
-}
-
-//other buttons
-
-//positive and negative
-
-function signs () {
-    if (problemDisplay.innerText > 0) {
-
-    } else {
-
+function operate (a, b, e) {
+    switch (e.target.innerText) {
+        case ("+"):
+            add(a, b);
+            break;
+        case ("-"):
+            subtract(a, b);
+            break;
+        case ("*"):
+            multiply(a, b);
+            break;
+        case ("/"):
+            divide(a, b);
+            break;
     }
 }
 
-//decimal btn
+//add function
 
-function decimal () {
-
-}
-
-//number buttons
-
-//operator buttons
-
-//add 
-
-function add (num1, num2) {
-    console.log("add");
-    return num1 + num2;
+function add (a, b) {
+    return a + b;
 }
 
 //subtract
 
-function subtract (num1, num2) {
-    console.log("subtract");
-    return num1 - num2;
+function subtract (a, b) {
+    return a - b;
 }
 
-//multiply 
+//multiply
 
-function multiply (num1, num2) {
-    console.log("multiply");
-    return num1 * num2;
+function multiply (a, b) {
+    return a * b;
 }
 
 //divide
 
-function divide (num1, num2) {
-    console.log("divide");
-    return num1 / num2;
-}
-
-//operate
-
-function operate (num1, num2) {
-    console.log("operate");
-    
-    populate();
-}
+function divide (a, b) {
+    return a / b;
+} 
