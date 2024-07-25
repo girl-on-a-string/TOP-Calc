@@ -13,8 +13,10 @@ function updateDisplay () {
     btn.forEach(btn => {
         btn.addEventListener("click", () => {
             console.log("btn clicked");
-            let input = btn.innerHTML;
+            let input = btn.innerText;
             console.log(input);
+
+            problemDisplay.innerText += input;
         });
     });
 }
