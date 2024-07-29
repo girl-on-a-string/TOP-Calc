@@ -1,84 +1,103 @@
 //variables
 
-const screen = document.getElementById("screen-display");
 const problemDisplay = document.getElementById("problem");
 const solutionDisplay = document.getElementById("solution");
 
-let btn = document.querySelectorAll(".btn");
+let value;
 
-//update display
+let currentInt; //current inputed number
+let currentTotal = 0; // current total amount
+let previousOperator; // last inputed operator
 
-function updateDisplay () {
-    btn = Array.from(btn);
-    btn.forEach(btn => {
-        btn.addEventListener("click", () => {
-            console.log("btn clicked");
-            let input = btn.innerText;
-            console.log(input);
+// btn click handling
 
-            problemDisplay.innerText += input;
-        });
-    });
+function btnClick (value) {
+    if (isNaN(value)) {
+        console.log("operator");
+        operatorHandling(value);
+    } else {
+        console.log("num");
+        numHandling();
+    }
+
 }
 
-updateDisplay();
+btnClick();
 
-//btn handling
+// operator handling
 
-// function btnClick () {
-//     btn = Array.from(btn);
-//     btn.forEach(btn => {
-//         btn.addEventListener("click", () => {
-//             console.log("recieved");
-//         });
-//     });
-// }
-
-// btnClick();
-
-//operate function
-
-function operate (a, b, e) {
-    switch (btn) {
-        case ("+"):
-            add(a, b);
-            console.log("add");
+function operatorHandling (value) {
+    switch(value) {
+        case "AC":
             break;
-        case ("-"):
-            subtract(a, b);
-            console.log("subtract");
+        case "+/-":
+            if (value > 0) {
+
+            } else if (value < 0) {
+
+            } else {
+                return;
+            }
+            console.log("reverse sign");
             break;
-        case ("*"):
-            multiply(a, b);
+        case "%":
+            break;
+        case "/":
+            currentTotal /= currentInt;
+            console.log("divide");
+            break;
+        case "*":
+            currentTotal *= currentInt;
             console.log("multiply");
             break;
-        case ("/"):
-            divide(a, b);
-            console.log("divide");
+        case "-":
+            currentTotal -= currentInt;
+            console.log("subtract");
+            break;
+        case "+":
+            currentTotal += currentInt;
+            console.log("addition");
+            break;
+        case ".":
+            let decimal = document.getElementById("decimal").value;
+            if (decimal > 1) { //error if there's more than one decimal
+                console.log(false);
+            }
+            console.log("decimal");
+            break;
+        case "=":
+            evaluateExpression();
             break;
     }
 }
 
-//add
+operatorHandling(value);
 
-function add (a, b) {
-    return a + b;
+//num handling
+
+function numHandling (value) {
+
 }
 
-//subtract
+// equals sign click handling
 
-function subtract (a, b) {
-    return a - b;
+function evaluateExpression (value) {
+
 }
 
-//multiply
+//make everything work
 
-function multiply (a, b) {
-    return a * b;
+function init () {
+    let btn = document.getElementsByClassName("btn");
+    btn = Array.from(btn);
+    btn.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            btnClick(e.target.innerText);
+            console.log(e.target.innerText);
+        });
+    });
 }
 
-//divide
+init();
 
-function divide (a, b) {
-    return a / b;
-} 
+
