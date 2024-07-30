@@ -1,7 +1,8 @@
 //variables
 
-const problemDisplay = document.getElementById("problem");
-const solutionDisplay = document.getElementById("solution");
+let genScreen = document.getElementById("screen-display");
+let problemDisplay = document.getElementById("problem");
+let solutionDisplay = document.getElementById("solution");
 
 let value;
 
@@ -15,6 +16,7 @@ function operatorHandling (value) {
     switch(value) {
         case "AC":
             console.log("clear");
+            genScreen.innerText = "";
             break;
         case "+/-":
             if (value > 0) {
@@ -53,7 +55,13 @@ function operatorHandling (value) {
             console.log("decimal");
             break;
         case "=":
-            evaluateExpression();
+            if (previousOperator === null) {
+                return;
+            } else {
+                evaluateExpression();
+                currentInt = currentTotal;
+                currentTotal = 0;
+            }
             console.log("equals");
             break;
     }
@@ -61,22 +69,21 @@ function operatorHandling (value) {
 
 operatorHandling(value);
 
-//num handling
-
-function numHandling (value) {
-
-}
-
-// equals sign click handling
+// do the math
 
 function evaluateExpression (value) {
-
+    solutionDisplay += currentTotal;
+    problemDisplay += currentInt;
 }
 
-//display numbers
+//display numbers for problem and solution
 
 function display (value) {
-
+    if ("=" === false) {
+        //if equals is not pushed then display it in problem section
+    } else {
+        //if equals is hit put product in solution display
+    }
 }
 
 // btn click handling
@@ -87,10 +94,10 @@ function btnClick (value) {
         operatorHandling(value);
     } else {
         console.log("num");
-        numHandling();
+        currentInt += document.querySelectorAll(".btn").value;
     }
 
-    problemDisplay.innerText += currentInt;
+    genScreen.innerText += currentInt;
 }
 
 //make everything work
