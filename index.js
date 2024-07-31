@@ -1,119 +1,75 @@
+//section 1
 //variables
 
 let genScreen = document.getElementById("screen-display");
 let problemDisplay = document.getElementById("problem");
 let solutionDisplay = document.getElementById("solution");
 
-let value;
+let value; //stores any inputted value
+let intVal; //stores inputted int value
+let OpVal; //stores inputted operator
 
-let currentInt = 0; //current inputed number
-let currentTotal = 0; // current total amount
-let previousOperator; // last inputed operator
+let btn = document.getElementsByClassName("btn"); 
+btn = Array.from(btn); //so I can add an event listener later
 
-// operator handling
-
-function operatorHandling (value) {
-    switch(value) {
-        case "AC":
-            console.log("clear");
-            genScreen.innerText = "";
-            break;
-        case "+/-":
-            if (value > 0) {
-                
-            } else if (value < 0) {
-
-            } else {
-                return;
-            }
-            console.log("reverse sign");
-            break;
-        case "%":
-            console.log("percentage");
-            break;
-        case "/":
-            currentTotal /= currentInt;
-            console.log("divide");
-            break;
-        case "*":
-            currentTotal *= currentInt;
-            console.log("multiply");
-            break;
-        case "-":
-            currentTotal -= currentInt;
-            console.log("subtract");
-            break;
-        case "+":
-            currentTotal += currentInt;
-            console.log("addition");
-            break;
-        case ".":
-            let decimal = document.getElementById("decimal").value;
-            if (decimal > 1) { //error if there's more than one decimal
-                console.log(false);
-            }
-            console.log("decimal");
-            break;
-        case "=":
-            if (previousOperator === null) {
-                return;
-            } else {
-                evaluateExpression();
-                currentInt = currentTotal;
-                currentTotal = 0;
-            }
-            console.log("equals");
-            break;
-    }
-}
-
-operatorHandling(value);
-
-// do the math
-
-function evaluateExpression (value) {
-    solutionDisplay += currentTotal;
-    problemDisplay += currentInt;
-}
-
-//display numbers for problem and solution
-
-function display (value) {
-    if ("=" === false) {
-        //if equals is not pushed then display it in problem section
-    } else {
-        //if equals is hit put product in solution display
-    }
-}
-
-// btn click handling
+//section 2
+//btn click handling
 
 function btnClick (value) {
-    if (isNaN(value)) {
-        console.log("operator");
-        operatorHandling(value);
-    } else {
-        console.log("num");
-        currentInt += document.querySelectorAll(".btn").value;
-    }
-
-    genScreen.innerText += currentInt;
-}
-
-//make everything work
-
-function init () {
-    //button click handling
-    let btn = document.getElementsByClassName("btn");
-    btn = Array.from(btn);
     btn.forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            btnClick(e.target.innerText);
-            console.log(e.target.innerText);
-        });
+        btn.addEventListener("click", () => {
+            console.log("click");
+            value = btn.innerText;
+            console.log(value);
+
+            //
+
+            operate(value);
+        })
     });
 }
 
-init();
+btnClick(value);
+
+//section 3
+//operator handling, doing the math
+
+function operate (value) {
+    if (isNaN(value)) {
+        intVal = btn.innerText;
+    } else {
+        switch (value) {
+            case "AC":
+                problemDisplay.innerText = "";
+                solutionDisplay.innerText = "";
+                console.log("clear");
+                break;
+            case "+/-":
+                console.log("reverse");
+                break;
+            case "%":
+                console.log("percentage");
+                break;
+            case "/":
+                console.log("divide");
+                break;
+            case "*":
+                console.log("multiply");
+                break;
+            case "-":
+                console.log("subtract");
+                break;
+            case "+":
+                console.log("add");
+                break;
+            case ".":
+                console.log("decimal");
+                break;
+            case "=":
+                console.log("evaluate");
+                break;
+        }
+    }
+}
 
 
