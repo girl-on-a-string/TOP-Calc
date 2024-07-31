@@ -9,6 +9,12 @@ let value; //stores any inputted value
 let intVal; //stores inputted int value
 let OpVal; //stores inputted operator
 
+let firstIntVal = ""; //stores first inputted number
+let secondIntVal = ""; //stores second inputted number
+
+let isFirstVal = false; //status of first val
+let isSecondVal = false; //status of second val
+
 let btn = document.getElementsByClassName("btn"); 
 btn = Array.from(btn); //so I can add an event listener later
 
@@ -20,6 +26,13 @@ function btnClick (value) {
         operate(value);
     } else {
         console.log(value);
+        if (isFirstVal == false) { //if there's no first val store num in firstIntVal
+            firstIntVal += value;
+            console.log(`first value: ${firstIntVal}`)
+        } else if (isFirstVal == true && isSecondVal == "") { //if there is a firstIntVal store this val in secondIntVal
+            value = 0;
+            secondIntVal += value;
+        }
     }
 }
 
@@ -70,7 +83,6 @@ function init () {
         btn.addEventListener("click", (e) => {
             value = e.target.innerText
             btnClick(value);
-            //console.log(e.target.innerText);
         });
     });
 }
