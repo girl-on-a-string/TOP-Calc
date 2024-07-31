@@ -16,17 +16,11 @@ btn = Array.from(btn); //so I can add an event listener later
 //btn click handling
 
 function btnClick (value) {
-    btn.forEach(btn => {
-        btn.addEventListener("click", () => {
-            console.log("click");
-            value = btn.innerText;
-            console.log(value);
-
-            //
-
-            operate(value);
-        })
-    });
+    if (isNaN(value)) {
+        operate(value);
+    } else {
+        console.log(value);
+    }
 }
 
 btnClick(value);
@@ -35,41 +29,52 @@ btnClick(value);
 //operator handling, doing the math
 
 function operate (value) {
-    if (isNaN(value)) {
-        intVal = btn.innerText;
-    } else {
-        switch (value) {
-            case "AC":
-                problemDisplay.innerText = "";
-                solutionDisplay.innerText = "";
-                console.log("clear");
-                break;
-            case "+/-":
-                console.log("reverse");
-                break;
-            case "%":
-                console.log("percentage");
-                break;
-            case "/":
-                console.log("divide");
-                break;
-            case "*":
-                console.log("multiply");
-                break;
-            case "-":
-                console.log("subtract");
-                break;
-            case "+":
-                console.log("add");
-                break;
-            case ".":
-                console.log("decimal");
-                break;
-            case "=":
-                console.log("evaluate");
-                break;
-        }
+    switch (value) {
+        case "AC":
+            problemDisplay.innerText = "";
+            solutionDisplay.innerText = "";
+            console.log("clear");
+            break;
+        case "+/-":
+            console.log("reverse");
+            break;
+        case "%":
+            console.log("percentage");
+            break;
+        case "/":
+            console.log("divide");
+            break;
+        case "*":
+            console.log("multiply");
+            break;
+        case "-":
+            console.log("subtract");
+            break;
+        case "+":
+            console.log("add");
+            break;
+        case ".":
+            console.log("decimal");
+            break;
+        case "=":
+            console.log("evaluate");
+            break;
     }
 }
+
+//section 4
+//initialize, get everything working
+
+function init () {
+    btn.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            value = e.target.innerText
+            btnClick(value);
+            //console.log(e.target.innerText);
+        });
+    });
+}
+
+init();
 
 
