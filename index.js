@@ -5,14 +5,16 @@ let genScreen = document.getElementById("screen-display");
 let problemDisplay = document.getElementById("problem");
 let solutionDisplay = document.getElementById("solution");
 
-let value; //stores any inputted value
+let value; //stores inputted value of btns 
 let firstIntVal = ""; //stores first inputted number
 let secondIntVal = ""; //stores second inputted number
+//let bothNumVal = [firstIntVal, secondIntVal]; //stores values of first and second inputted number
 let OpVal; //stores inputted operator
 let solutionVal = ""; //stores the solution of the problem
 
 let isFirstVal = false; //status of first val
 let isSecondVal = false; //status of second val
+let isOpVal = false; //status of the operator
 let isEqualsPressed = false; //status of the equasion
 
 let btn = document.getElementsByClassName("btn"); 
@@ -23,25 +25,39 @@ btn = Array.from(btn); //so I can add an event listener later
 
 function btnClick (value) {
     if (isNaN(value)) {
+        OpVal = "";
         operate(value);
     } else {
-        console.log(value);
-        if (isFirstVal == false) { //if there's no first val store num in firstIntVal
-            firstIntVal += value;
+        if (isFirstVal == false) {
+            getFirstValue(value);
+        }
 
-            if (firstIntVal == 0) { //if the first digit in the number is zero don't show it
-
-            }
-
-            console.log(`first value: ${firstIntVal}`);
-        } else if (isFirstVal == true && isSecondVal == "") { //if there is a firstIntVal store this val in secondIntVal
-            value = 0;
-            secondIntVal += value;
+        if (isSecondVal == false) {
+            getSecondValue(value);
         }
     }
 }
 
 btnClick(value);
+
+//section
+//get values
+
+function getFirstValue (value) {
+    firstIntVal += value;
+    console.log(`first value: ${firstIntVal}`);
+}
+
+function getSecondValue (value) {
+    if (isFirstVal == true) {
+        
+    }
+}
+
+function getOpValue (value) {
+    OpVal += document.getElementsByClassName("operator").innerText;
+    console.log(`operator value: ${OpVal}`);
+}
 
 //section 3
 //operator handling, doing the math
@@ -70,13 +86,14 @@ function operate (value) {
                 value = value + a;
                 console.log(value);
             }
-
             break;
         case "%":
             console.log("percentage");
             break;
         case "/":
             console.log("divide");
+            // firstIntVal /= secondIntVal;
+            // solutionVal = firstIntVal;
             break;
         case "*":
             console.log("multiply");
@@ -114,7 +131,7 @@ function display (value) {
 function init () {
     btn.forEach(btn => {
         btn.addEventListener("click", (e) => {
-            value = e.target.innerText
+            value = e.target.innerText;
             btnClick(value);
             display(value);
         });
