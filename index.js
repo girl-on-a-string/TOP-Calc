@@ -88,11 +88,11 @@ function operate (value) {
             if (firstIntVal == 0 || secondIntVal == 0) { //handle division by zero errors
                 console.log("error");
             }
-            solutionVal = firstIntVal / secondIntVal;
+            solutionVal = parseFloat(firstIntVal) / parseFloat(secondIntVal);
             break;
         case "x":
             console.log("multiply");
-            solutionVal = firstIntVal * secondIntVal;
+            solutionVal = parseFloat(firstIntVal) * parseFloat(secondIntVal);
 
             if (value == 0) {
                 solutionVal = 0;
@@ -101,11 +101,11 @@ function operate (value) {
             break;
         case "-":
             console.log("subtract");
-            solutionVal = firstIntVal - secondIntVal;
+            solutionVal = parseFloat(firstIntVal) - parseFloat(secondIntVal);
             break;
         case "+":
             console.log("add");
-            solutionVal = firstIntVal + secondIntVal;
+            solutionVal = parseFloat(firstIntVal) + parseFloat(secondIntVal);
             break;
         case ".":
             console.log("decimal");
