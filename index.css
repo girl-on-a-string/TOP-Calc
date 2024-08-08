@@ -48,16 +48,6 @@ body {
 
 /* multiples and colors */
 
-#decimal:hover, .operator:hover, .num:hover, .others:hover {
-    background-color: #000000;
-    color: darkgray;
-    transition: .2s;
-}
-
-.operator[value="="]:hover {
-    color: yellow;
-}
-
 #decimal, .operator, .num, .others {
     font-size: 30px;
     display: flex;

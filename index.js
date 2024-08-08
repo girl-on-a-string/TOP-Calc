@@ -47,12 +47,12 @@ btnClick(value);
 
 function getFirstValue (value) {
     firstIntVal += value;
-    secondIntVal = "";
     console.log(`first value: ${firstIntVal}`);
 }
 
 function getSecondValue (value) {
-    if (firstIntVal !== "" && isOpVal == true) {
+    if ( isOpVal == true) {
+        secondIntVal = "";
         secondIntVal += value;
         console.log(`second value: ${secondIntVal}`);
     }
@@ -96,7 +96,7 @@ function operate (value) {
             }
             solutionVal = firstIntVal / secondIntVal;
             break;
-        case "*":
+        case "x":
             console.log("multiply");
             solutionVal = firstIntVal * secondIntVal;
             break;
