@@ -1,12 +1,27 @@
+/* colors */
+
+:root {
+    /* light mode */
+
+    --lm-bg: #5f9bad;
+    --lm-screen-color: #579c94;
+    --lm-screen-font: #37635e;
+    --lm-calc-bg: #a33a33;
+    --lm-calc-btn-bg: #b57541;
+    --lm-calc-btn-font: #a33a33;
+}
+
+/* overarching */
+
 * {
-    background-color: darkgray;
+    font-family: "Pixelify Sans";
 }
 
 body {
     display: flex;
     justify-content: center;
     align-content: center;
-    background-color: darkgray;
+    background-color: var(--lm-bg);
     padding: 30px;
 }
 
@@ -24,15 +39,14 @@ body {
 
     width: 700px;
     height: 1000px;
-    filter: drop-shadow(1px 0px 6px #000000);
-    border: 1px solid black;
+    border: 5px solid black;
+    border-radius: 30px;
+    padding: 10px;
+    gap: 10px;
+    background-color: var(--lm-calc-bg);
 }
 
 /* multiples and colors */
-
-#screen-display, #decimal, .operator, .num, .others {
-    border: 1px solid black;
-}
 
 #decimal:hover, .operator:hover, .num:hover, .others:hover {
     background-color: #000000;
@@ -51,16 +65,29 @@ body {
     align-items: center;
 }
 
+.btn, #screen-display {
+    border: 3px solid black;
+}
+
+.btn {
+    background-color: var(--lm-calc-btn-bg);
+    color: var(--lm-calc-btn-font);
+}
+
 /* screen */
 
 #screen-display {
     grid-area: screen;
+    border-radius: 20px;
+    background-color: var(--lm-screen-color);
+    color: var(--lm-screen-font);
 }
 
 /* clear */
 
 #clear {
     grid-area: clear;
+    border-radius: 20px 0px 0px 0px;
 }
 
 /* pos and neg */
@@ -79,6 +106,7 @@ body {
 
 #divide {
     grid-area: divide;
+    border-radius: 0px 20px 0px 0px;
 }
 
 /* seven */
@@ -157,6 +185,7 @@ body {
 
 #zero {
     grid-area: zero;
+    border-radius: 0px 0px 0px 20px;
 }
 
 /* decimial */
@@ -169,4 +198,5 @@ body {
 
 #equals {
     grid-area: equals;
+    border-radius: 0px 0px 20px 0px;
 }

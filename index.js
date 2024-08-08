@@ -8,14 +8,13 @@ let solutionDisplay = document.getElementById("solution");
 let value; //stores inputted value of btns 
 let firstIntVal = ""; //stores first inputted number
 let secondIntVal = ""; //stores second inputted number
-//let bothNumVal = [firstIntVal, secondIntVal]; //stores values of first and second inputted number
 let OpVal; //stores inputted operator
 let solutionVal = ""; //stores the solution of the problem
 
 let isFirstVal = false; //status of first val
 let isSecondVal = false; //status of second val
-let isOpVal = false; //status of the operator
 let isEqualsPressed = false; //status of the equasion
+let isOpVal = false; //status of the operator
 
 let btn = document.getElementsByClassName("btn"); 
 btn = Array.from(btn); //so I can add an event listener later
@@ -25,14 +24,17 @@ btn = Array.from(btn); //so I can add an event listener later
 
 function btnClick (value) {
     if (isNaN(value)) {
-        OpVal = "";
+        isOpVal = true;
+        OpVal = value;
         operate(value);
+        console.log(`operator clicked: ${OpVal}`);
     } else {
+        console.log(`number clicked: ${value}`);
         if (isFirstVal == false) {
             getFirstValue(value);
-        }
+        } 
 
-        if (isSecondVal == false) {
+        if (isOpVal == true) {
             getSecondValue(value);
         }
     }
@@ -45,18 +47,15 @@ btnClick(value);
 
 function getFirstValue (value) {
     firstIntVal += value;
+    secondIntVal = "";
     console.log(`first value: ${firstIntVal}`);
 }
 
 function getSecondValue (value) {
-    if (isFirstVal == true) {
-        
+    if (firstIntVal !== "" && isOpVal == true) {
+        secondIntVal += value;
+        console.log(`second value: ${secondIntVal}`);
     }
-}
-
-function getOpValue (value) {
-    OpVal += document.getElementsByClassName("operator").innerText;
-    console.log(`operator value: ${OpVal}`);
 }
 
 //section 3
@@ -92,17 +91,22 @@ function operate (value) {
             break;
         case "/":
             console.log("divide");
-            // firstIntVal /= secondIntVal;
-            // solutionVal = firstIntVal;
+            if (firstIntVal == 0 || secondIntVal == 0) { //handle division by zero errors
+                console.log("error");
+            }
+            solutionVal = firstIntVal / secondIntVal;
             break;
         case "*":
             console.log("multiply");
+            solutionVal = firstIntVal * secondIntVal;
             break;
         case "-":
             console.log("subtract");
+            solutionVal = firstIntVal - secondIntVal;
             break;
         case "+":
             console.log("add");
+            solutionVal = firstIntVal + secondIntVal;
             break;
         case ".":
             console.log("decimal");
