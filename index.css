@@ -71,6 +71,11 @@ body {
     border-radius: 20px;
     background-color: var(--lm-screen-color);
     color: var(--lm-screen-font);
+    padding: 10px;
+}
+
+#problem {
+    font-size: 40px;
 }
 
 /* clear */

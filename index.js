@@ -64,9 +64,6 @@ function getSecondValue (value) {
 function operate (value) {
     switch (value) {
         case "AC":
-            problemDisplay.innerText = "";
-            solutionDisplay.innerText = "";
-
             firstIntVal = "";
             secondIntVal = "";
             OpVal = "";
@@ -122,10 +119,21 @@ function operate (value) {
 //display numbers
 
 function display (value) {
+    // if (isEqualsPressed == true || isEqualsPressed !== true && value === "AC") {
+    //     problemDisplay.innerText = "";
+    //     solutionDisplay.innerText = "";
+    //     console.log(true);
+    // }
+
     if (isEqualsPressed == true) { //when equals is pressed display solution in solution in solution space
-        solutionDisplay += value;
+        solutionDisplay.innerText += solutionVal;
     } else { //if equals hasn't been pressed store problem in problem space
-        problemDisplay += value;
+        problemDisplay.innerText += value;
+
+        if (value == "AC") {
+            problemDisplay.innerText = "";
+            solutionDisplay.innerText = "";
+        }
     }
 }
 
