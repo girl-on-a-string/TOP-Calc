@@ -25,7 +25,11 @@ btn = Array.from(btn); //so I can add an event listener later
 function btnClick (value) {
     if (isNaN(value)) {
         isOpVal = true;
-        OpVal = value;
+        
+        if (value !== "AC") {
+            OpVal = value;
+        }
+
         operate(value);
         console.log(`operator clicked: ${OpVal}`);
     } else {
@@ -63,13 +67,6 @@ function getSecondValue (value) {
 
 function operate (value) {
     switch (value) {
-        case "AC":
-            firstIntVal = "";
-            secondIntVal = "";
-            OpVal = "";
-
-            console.log("clear");
-            break;
         case "+/-":
             console.log("reverse");
 
@@ -96,6 +93,11 @@ function operate (value) {
         case "x":
             console.log("multiply");
             solutionVal = firstIntVal * secondIntVal;
+
+            if (value == 0) {
+                solutionVal = 0;
+            }
+
             break;
         case "-":
             console.log("subtract");
@@ -115,25 +117,27 @@ function operate (value) {
     }
 }
 
+function clearDisplay () {
+    OpVal = "";
+    firstIntVal = "";
+    secondIntVal = "";
+
+    problemDisplay.innerText = "";
+    solutionDisplay.innerText = "";
+}
+
 //section 4
 //display numbers
 
 function display (value) {
-    // if (isEqualsPressed == true || isEqualsPressed !== true && value === "AC") {
-    //     problemDisplay.innerText = "";
-    //     solutionDisplay.innerText = "";
-    //     console.log(true);
-    // }
-
     if (isEqualsPressed == true) { //when equals is pressed display solution in solution in solution space
         solutionDisplay.innerText += solutionVal;
     } else { //if equals hasn't been pressed store problem in problem space
         problemDisplay.innerText += value;
+    }
 
-        if (value == "AC") {
-            problemDisplay.innerText = "";
-            solutionDisplay.innerText = "";
-        }
+    if (value == "AC") {
+        clearDisplay();
     }
 }
 
