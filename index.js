@@ -66,6 +66,10 @@ function getSecondValue (value) {
 //operator handling, doing the math
 
 function operate (value) {
+    if (firstIntVal == "" || secondIntVal == "" || OpVal == "") {
+        return;
+    }
+
     switch (value) {
         case "+/-":
             console.log("reverse");
@@ -124,6 +128,8 @@ function clearDisplay () {
 
     problemDisplay.innerText = "";
     solutionDisplay.innerText = "";
+
+    isEqualsPressed = false;
 }
 
 //section 4
