@@ -64,6 +64,10 @@ body {
     color: var(--lm-calc-btn-font);
 }
 
+#solution, #problem {
+    padding: 0;
+}
+
 /* screen */
 
 #screen-display {
@@ -76,10 +80,14 @@ body {
 
 #problem {
     font-size: 40px;
+    max-height: 40%;
+    height: 40%;
 }
 
 #solution {
     font-size: 60px;
+    max-height: 60%;
+    height: 60%;
 }
 
 /* clear */

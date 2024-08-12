@@ -44,18 +44,17 @@ function btnClick (value) {
     }
 }
 
-btnClick(value);
-
 //section
 //get values
 
 function getFirstValue (value) {
     firstIntVal += value;
+    secondIntVal = "";
     console.log(`first value: ${firstIntVal}`);
 }
 
 function getSecondValue (value) {
-    if ( isOpVal == true) {
+    if (firstIntVal !== "" && isOpVal == true) {
         secondIntVal = "";
         secondIntVal += value;
         console.log(`second value: ${secondIntVal}`);
@@ -148,18 +147,18 @@ function display (value) {
 }
 
 //section 5
-//initialize, get everything working
+//get everything working
 
-function init () {
-    btn.forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            value = e.target.innerText;
-            btnClick(value);
-            display(value);
-        });
+btn.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+        value = e.target.innerText;
+
+        btnClick(value);
+        display(value);
     });
-}
+});
 
-init();
+
+
 
 
