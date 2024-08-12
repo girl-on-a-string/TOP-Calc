@@ -49,13 +49,17 @@ function btnClick (value) {
 
 function getFirstValue (value) {
     firstIntVal += value;
-    secondIntVal = "";
+    
+    if (isSecondVal == true) {
+        firstIntVal = firstIntVal;
+    }
+
     console.log(`first value: ${firstIntVal}`);
 }
 
 function getSecondValue (value) {
     if (firstIntVal !== "" && isOpVal == true) {
-        secondIntVal = "";
+        isSecondVal = true;
         secondIntVal += value;
         console.log(`second value: ${secondIntVal}`);
     }
