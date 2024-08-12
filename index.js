@@ -26,19 +26,23 @@ function btnClick (value) {
     if (isNaN(value)) {
         isOpVal = true;
         
-        if (value !== "AC") {
+        if (value !== "AC" || value !== "=") {
             OpVal = value;
+            operate(OpVal);
+        }  
+
+        if (value == "=") {
+            reset();
         }
 
-        operate(value);
         console.log(`operator clicked: ${OpVal}`);
     } else {
-        console.log(`number clicked: ${value}`);
-        if (isFirstVal == false) {
+        // console.log(`number clicked: ${value}`);
+        if (isFirstVal == false || isOpVal == false) {
             getFirstValue(value);
         } 
 
-        if (isOpVal == true) {
+        if (firstIntVal !== "" && isOpVal == true) {
             getSecondValue(value);
         }
     }
@@ -48,28 +52,33 @@ function btnClick (value) {
 //get values
 
 function getFirstValue (value) {
-    firstIntVal += value;
-    
-    if (isSecondVal == true) {
-        firstIntVal = firstIntVal;
+    if (isSecondVal == false || OpVal == "") {
+        firstIntVal += value;
+        console.log("getting first value");
+    } else if (isSecondVal == true || value == "AC" || OpVal !== "") {
+        firstIntVal += "";
+        console.log("first value done");
     }
 
     console.log(`first value: ${firstIntVal}`);
 }
 
 function getSecondValue (value) {
-    if (firstIntVal !== "" && isOpVal == true) {
+    // if (firstIntVal !== "" && isOpVal == true) {
         isSecondVal = true;
         secondIntVal += value;
         console.log(`second value: ${secondIntVal}`);
-    }
+    // }
 }
 
 //section 3
 //operator handling, doing the math
 
 function operate (value) {
+    console.log("operating");
+
     if (firstIntVal == "" || secondIntVal == "" || OpVal == "") {
+        console.log("nothing to evaluate");
         return;
     }
 
@@ -124,6 +133,10 @@ function operate (value) {
     }
 }
 
+function evaluate () {
+
+}
+
 function clearDisplay () {
     OpVal = "";
     firstIntVal = "";
@@ -131,8 +144,6 @@ function clearDisplay () {
 
     problemDisplay.innerText = "";
     solutionDisplay.innerText = "";
-
-    isEqualsPressed = false;
 }
 
 //section 4
@@ -140,13 +151,16 @@ function clearDisplay () {
 
 function display (value) {
     if (isEqualsPressed == true) { //when equals is pressed display solution in solution in solution space
+        console.log("displaying solution");
         solutionDisplay.innerText += solutionVal;
     } else { //if equals hasn't been pressed store problem in problem space
+        console.log("displaying problem");
         problemDisplay.innerText += value;
     }
 
     if (value == "AC") {
         clearDisplay();
+        console.log("cleared");
     }
 }
 
@@ -161,6 +175,16 @@ btn.forEach(btn => {
         display(value);
     });
 });
+
+//section 6
+//reset everything
+
+function reset () {
+    isEqualsPressed = false;
+    isFirstVal = false;
+    isSecondVal = false;
+    isOpVal = false;
+}
 
 
 
