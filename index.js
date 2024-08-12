@@ -23,11 +23,20 @@ function btnClick (value) {
         OpVal = value;
 
         if (value == "=") { 
-            console.log("evaluate");
             isEqualsPressed = true;
+            console.log("evaluate");
         }
 
-        if (value == "AC") { //clear the display
+        if (value == "AC") { //clear the display, reset everything
+            solutionDisplay.innerText = "";
+            problemDisplay.innerText = "";
+
+            firstIntVal = "";
+            secondIntVal = "";
+            OpVal = "";
+
+            isEqualsPressed = false;
+
             console.log("Clear");
         }
 
@@ -91,7 +100,9 @@ function operate (value) {
 
 function display () {
     if (isEqualsPressed == false) { //problem display
-        problemDisplay.innerText += value;
+        if (value !== "AC") {
+            problemDisplay.innerText += value;
+        }
     }
 
     if (isEqualsPressed == true) { //solution display
