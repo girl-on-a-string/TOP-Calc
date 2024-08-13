@@ -27,15 +27,8 @@ body {
 
 #calc {
     display: grid;
-    grid-template-areas: 
-        'screen screen screen screen'
-        'screen screen screen screen'
-        'clear posneg percent divide'
-        'seven eight nine multi'
-        'four five six minus'
-        'one two three plus'
-        'zero zero decimal equals'
-    ;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(7, 1fr);
 
     width: 700px;
     height: 1000px;
@@ -71,7 +64,8 @@ body {
 /* screen */
 
 #screen-display {
-    grid-area: screen;
+    grid-column: 1 / span 4;
+    grid-row: 1 / span 2;
     border-radius: 20px;
     background-color: var(--lm-screen-color);
     color: var(--lm-screen-font);
@@ -93,117 +87,132 @@ body {
 /* clear */
 
 #clear {
-    grid-area: clear;
+    grid-column: 1 / span 1;
     border-radius: 20px 0px 0px 0px;
 }
 
 /* pos and neg */
 
 #posneg {
-    grid-area: posneg;
+    grid-column: 2 / span 1;
 }
 
-/* percent */
+/* delete */
 
-#percent {
-    grid-area: percent;
+#delete {
+    grid-column: 3 / span 1;
 }
 
 /* devide */
 
 #divide {
-    grid-area: divide;
+    grid-column: 4 / span 1;
     border-radius: 0px 20px 0px 0px;
 }
 
 /* seven */
 
 #seven {
-    grid-area: seven;
+    grid-row: 4 / span 1;
+    grid-column: 1 / span 1;
 }
 
 /* eight */
 
 #eight {
-    grid-area: eight;
+    grid-row: 4 / span 1;
+    grid-column: 2 / span 1;
 }
 
 /* nine */
 
 #nine {
-    grid-area: nine;
+    grid-row: 4 / span 1;
+    grid-column: 3 / span 1;
 }
 
 /* multiply */
 
 #multiply {
-    grid-area: multi;
+    grid-row: 4 / span 1;
+    grid-column: 4 / span 1;
 }
 
 /* four */
 
 #four {
-    grid-area: four;
+    grid-row: 5 / span 1;
+    grid-column: 1 / span 1;
 }
 
 /* five */
 
 #five {
-    grid-area: five;
+    grid-row: 5 / span 1;
+    grid-column: 2 / span 1;
 }
 
 /* six */
 
 #six {
-    grid-area: six;
+    grid-row: 5 / span 1;
+    grid-column: 3 / span 1;
 }
 
 /* minus */
 
 #minus {
-    grid-area: minus;
+    grid-row: 6 / span 1;
+    grid-column: 4 / span 1;
 }
 
 /* one */
 
 #one {
-    grid-area: one;
+    grid-row: 6 / span 1;
+    grid-column: 1 / span 1;
 }
 
 /* two */
 
 #two {
-    grid-area: two;
+    grid-row: 6 / span 1;
+    grid-column: 2 / span 1;
 }
 
 /* three */
 
 #three {
-    grid-area: three;
+    grid-row: 6 / span 1;
+    grid-column: 3 / span 1;
 }
 
 /* plus */
 
 #plus {
-    grid-area: plus;
+    grid-row: 5 / span 1;
+    grid-column: 4 / span 1;
 }
 
 /* zero */
 
 #zero {
-    grid-area: zero;
+    grid-row: 7 / span 1;
+    grid-column: 1 / span 2;
     border-radius: 0px 0px 0px 20px;
 }
 
 /* decimial */
 
 #decimal {
-    grid-area: decimal;
+    grid-row: 7 / span 1;
+    grid-column: 3 / span 1;
 }
 
 /* equals */
 
 #equals {
-    grid-area: equals;
+    grid-row: 7 / span 1;
+    grid-column:  4 / span 1;
     border-radius: 0px 0px 20px 0px;
 }

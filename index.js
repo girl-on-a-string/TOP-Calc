@@ -51,14 +51,6 @@ function btnClick (value) {
         }
 
     } else { //if the number is an integer
-        // if (OpVal == "" && secondIntVal == "") {
-        //     getValue1(value);
-        // }
-
-        // if (OpVal !== "" && firstIntVal !== "") {
-        //     getValue2(value);
-        // }
-
         getValue1(value);
         getValue2(value);
     }
