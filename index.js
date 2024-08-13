@@ -21,10 +21,12 @@ btn = Array.from(btn); //so I can add an event listener later
 function btnClick (value) {
     if (isNaN(value)) { //if the value is not a number (operator)
         OpVal = value;
+        operate(value);
 
         if (value == "=") { 
             isEqualsPressed = true;
             console.log("evaluate");
+            console.log(`solution: ${solutionVal}`);
         }
 
         if (value == "AC") { //clear the display, reset everything
@@ -48,27 +50,37 @@ function btnClick (value) {
             console.log("reverse");
         }
 
-        operate(value);
     } else { //if the number is an integer
-        if (OpVal == "" && secondIntVal == "") {
-            firstIntVal += value;
-        }
+        // if (OpVal == "" && secondIntVal == "") {
+        //     getValue1(value);
+        // }
+
+        // if (OpVal !== "" && firstIntVal !== "") {
+        //     getValue2(value);
+        // }
+
+        getValue1(value);
+        getValue2(value);
     }
 }
 
 //section 3
 //storing numbers
 
-function numHandling (value) { //handle what happens with decimals
-
-}
-
 function getValue1 (value) {
-
+    if (OpVal == "" && secondIntVal == "") {
+        firstIntVal += value;
+    } else {
+        firstIntVal += "";
+    }
+    console.log(`first val: ${firstIntVal}`);
 }
 
 function getValue2 (value) {
-
+    if (OpVal !== "" && firstIntVal !== "") {
+        secondIntVal += value;
+    }
+    console.log(`second val: ${secondIntVal}`);
 }
 
 //section 4
