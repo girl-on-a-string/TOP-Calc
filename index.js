@@ -21,12 +21,18 @@ btn = Array.from(btn); //so I can add an event listener later
 function btnClick (value) {
     if (isNaN(value)) { //if the value is not a number (operator)
         OpVal = value;
-        operate(value);
+        console.log(`operator: ${OpVal}`);
 
         if (value == "=") { 
-            isEqualsPressed = true;
             console.log("evaluate");
-            console.log(`solution: ${solutionVal}`);
+
+            if (secondIntVal !== "") { //if second value exists, preform math
+                isEqualsPressed = true;
+                operate(OpVal);
+                console.log(`solution: ${solutionVal}`);
+            } else {
+                solutionDisplay.innerText = "Error: nothing to compute";
+            }
         }
 
         if (value == "AC") { //clear the display, reset everything
@@ -39,7 +45,7 @@ function btnClick (value) {
 
             isEqualsPressed = false;
 
-            console.log("Clear");
+            console.log("Cleared");
         }
 
         if (value == ".") { //decimal handling
@@ -74,7 +80,7 @@ function btnClick (value) {
 function getValue1 (value) {
     if (OpVal == "" && secondIntVal == "") {
         firstIntVal += value;
-        firstIntVal = parseFloat(firstIntVal);
+        firstIntVal = parseFloat(firstIntVal); //convert to number
     } else {
         firstIntVal += "";
     }
@@ -84,7 +90,7 @@ function getValue1 (value) {
 function getValue2 (value) {
     if (OpVal !== "" && firstIntVal !== "") {
         secondIntVal += value;
-        secondIntVal = parseFloat(secondIntVal);
+        secondIntVal = parseFloat(secondIntVal); //convert to number
     }
     console.log(`second val: ${secondIntVal}`);
 }
@@ -92,8 +98,8 @@ function getValue2 (value) {
 //section 4
 //operator handling
 
-function operate (value) {
-    switch (value) {
+function operate (OpVal) {
+    switch (OpVal) {
         case "+":
             solutionVal = firstIntVal + secondIntVal;
             console.log(`add (${value})`);
@@ -107,16 +113,17 @@ function operate (value) {
             console.log(`multiply (${value})`);
             break;
         case "/":
-            if (secondIntVal == "0") { //division by 0 handling
+            if (secondIntVal === "0") { //division by 0 handling
                 solutionDisplay.innerText += "Error: Division by 0";
+                solutionVal = 0; //reset solution
                 return;
             }
-
             solutionVal = firstIntVal / secondIntVal;
             console.log(`divide (${value})`);
             break;
         default:
             solutionVal = 0;
+            console.log("defaulted");
     }
 }
 
