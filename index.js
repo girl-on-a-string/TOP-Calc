@@ -47,7 +47,19 @@ function btnClick (value) {
         }
 
         if (value == "+/-") { // sign conversion handling
+            if (firstIntVal == "") { //if first value is empty
+                signConversion(value);
+            } else { //if first value isn't empty
+                signConversion(value);
+            }
+
             console.log("reverse");
+        }
+
+        if (value == "←") {
+            let displayLength = problemDisplay.innerText;
+            displayLength.slice(0, displayLength.length - 1);
+            console.log("backspace");
         }
 
     } else { //if the number is an integer
@@ -93,10 +105,33 @@ function operate (value) {
             console.log("multiply");
             break;
         case "/":
+            if (firstIntVal == "0" || secondIntVal == "0") { //division by 0 handling
+                solutionDisplay.innerText += "Error: Division by 0";
+                return;
+            }
+
             solutionVal = parseFloat(firstIntVal) / parseFloat(secondIntVal);
             console.log("divide");
             break;
     }
+}
+
+function signConversion (value) {
+    let double = value * 2;
+
+    if (value > 0) { //convert to negative
+        value = value - double;
+    } 
+
+    if (value < 0) { //convert to positive
+        value = value + double;
+    }
+
+    if (value === "0") { //do nothing if it's zero
+        return;
+    }
+
+    console.log(`reversed: ${value}`);
 }
 
 //section
