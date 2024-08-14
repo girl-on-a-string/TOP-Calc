@@ -8,7 +8,7 @@ let value; //stores inputted value of btns
 let firstIntVal = ""; //stores first inputted number
 let secondIntVal = ""; //stores second inputted number
 let OpVal = ""; //stores inputted operator
-let solutionVal = ""; //stores the solution of the problem
+let solutionVal = 0; //stores the solution of the problem
 
 let isEqualsPressed = false;
 
@@ -74,6 +74,7 @@ function btnClick (value) {
 function getValue1 (value) {
     if (OpVal == "" && secondIntVal == "") {
         firstIntVal += value;
+        firstIntVal = parseFloat(firstIntVal);
     } else {
         firstIntVal += "";
     }
@@ -83,6 +84,7 @@ function getValue1 (value) {
 function getValue2 (value) {
     if (OpVal !== "" && firstIntVal !== "") {
         secondIntVal += value;
+        secondIntVal = parseFloat(secondIntVal);
     }
     console.log(`second val: ${secondIntVal}`);
 }
@@ -93,26 +95,28 @@ function getValue2 (value) {
 function operate (value) {
     switch (value) {
         case "+":
-            solutionVal = parseFloat(firstIntVal) + parseFloat(secondIntVal);
-            console.log("add");
+            solutionVal = firstIntVal + secondIntVal;
+            console.log(`add (${value})`);
             break;
         case "-":
-            solutionVal = parseFloat(firstIntVal) - parseFloat(secondIntVal);
-            console.log("subtract");
+            solutionVal = firstIntVal - secondIntVal;
+            console.log(`subtract (${value})`);
             break;
         case "x":
-            solutionVal = parseFloat(firstIntVal) * parseFloat(secondIntVal);
-            console.log("multiply");
+            solutionVal = firstIntVal * secondIntVal;
+            console.log(`multiply (${value})`);
             break;
         case "/":
-            if (firstIntVal == "0" || secondIntVal == "0") { //division by 0 handling
+            if (secondIntVal == "0") { //division by 0 handling
                 solutionDisplay.innerText += "Error: Division by 0";
                 return;
             }
 
-            solutionVal = parseFloat(firstIntVal) / parseFloat(secondIntVal);
-            console.log("divide");
+            solutionVal = firstIntVal / secondIntVal;
+            console.log(`divide (${value})`);
             break;
+        default:
+            solutionVal = 0;
     }
 }
 
@@ -134,7 +138,7 @@ function signConversion (value) {
     console.log(`reversed: ${value}`);
 }
 
-//section
+//section 5
 //display everything
 
 function display () {
@@ -149,7 +153,7 @@ function display () {
     }
 }
 
-//section
+//section 6
 //put everything together
 
 btn.forEach(btn => {
@@ -159,3 +163,4 @@ btn.forEach(btn => {
         display(value);
     })
 });
+
