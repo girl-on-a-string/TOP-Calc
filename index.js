@@ -103,31 +103,33 @@ function operate (OpVal) {
     console.log(firstIntVal, typeof(firstIntVal));
     console.log(secondIntVal, typeof(secondIntVal));
 
-    switch (OpVal) {
-        case "+":
-            solutionVal = firstIntVal + secondIntVal;
-            console.log(`add (${value})`);
-            break;
-        case "-":
-            solutionVal = firstIntVal - secondIntVal;
-            console.log(`subtract (${value})`);
-            break;
-        case "x":
-            solutionVal = firstIntVal * secondIntVal;
-            console.log(`multiply (${value})`);
-            break;
-        case "/":
-            if (secondIntVal === "0") { //division by 0 handling
-                solutionDisplay.innerText += "Error: Division by 0";
-                solutionVal = 0; //reset solution
-                return;
-            }
-            solutionVal = firstIntVal / secondIntVal;
-            console.log(`divide (${value})`);
-            break;
-        default:
-            solutionVal = 0;
-            console.log("defaulted");
+    if (firstIntVal !== "" && secondIntVal !== "") {
+        switch (OpVal) {
+            case "+":
+                solutionVal = firstIntVal + secondIntVal;
+                console.log(`add (${value})`);
+                break;
+            case "-":
+                solutionVal = firstIntVal - secondIntVal;
+                console.log(`subtract (${value})`);
+                break;
+            case "x":
+                solutionVal = firstIntVal * secondIntVal;
+                console.log(`multiply (${value})`);
+                break;
+            case "/":
+                if (secondIntVal === "0") { //division by 0 handling
+                    solutionDisplay.innerText += "Error: Division by 0";
+                    solutionVal = 0; //reset solution
+                    return;
+                }
+                solutionVal = firstIntVal / secondIntVal;
+                console.log(`divide (${value})`);
+                break;
+            default:
+                solutionVal = 0;
+                console.log("defaulted");
+        }
     }
 }
 
