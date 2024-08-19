@@ -20,14 +20,13 @@ btn = Array.from(btn); //so I can add an event listener later
 
 function btnClick (value) {
     if (isNaN(value)) { //if the value is not a number (operator)
-        console.log(`operator: ${OpVal}`);
 
         if (value == "+" || value == "-" || value == "x" || value == "/") {
             OpVal = value;
         }
 
         if (value == "=") { 
-            console.log("evaluate");
+            console.log(`evaluate (${value})`);
 
             if (secondIntVal !== "" && firstIntVal !== "") { //if both values exist, preform math
                 isEqualsPressed = true;
@@ -37,10 +36,6 @@ function btnClick (value) {
                 if (firstIntVal === "" || secondIntVal === "") {
                     solutionDisplay.innerText = "Error: only one value";
                 } 
-
-                // if (isNaN(value) > 2) {
-                //     solutionDisplay.innerText = "Error: too many operators";
-                // }
             }
         }
 
@@ -59,6 +54,10 @@ function btnClick (value) {
 
         if (value == ".") { //decimal handling
             console.log("decimal");
+
+            if (problemDisplay.innerText.includes(".")) { //disable adding another decimal if there already is one in the display
+
+            }
         }
 
         if (value == "+/-") { // sign conversion handling
@@ -109,24 +108,19 @@ function getValue2 (value) {
 //operator handling
 
 function operate (OpVal) {
-    // console.log(firstIntVal, typeof(firstIntVal));
-    // console.log(secondIntVal, typeof(secondIntVal));
-
-    console.log(OpVal);
-
     if (firstIntVal !== "" && secondIntVal !== "") {
         switch (OpVal) {
             case "+":
                 solutionVal = firstIntVal + secondIntVal;
-                console.log(`add (${value})`);
+                console.log(`add (${OpVal})`);
                 break;
             case "-":
                 solutionVal = firstIntVal - secondIntVal;
-                console.log(`subtract (${value})`);
+                console.log(`subtract (${OpVal})`);
                 break;
             case "x":
                 solutionVal = firstIntVal * secondIntVal;
-                console.log(`multiply (${value})`);
+                console.log(`multiply (${OpVal})`);
                 break;
             case "/":
                 if (secondIntVal === "0") { //division by 0 handling
@@ -135,7 +129,7 @@ function operate (OpVal) {
                     return;
                 }
                 solutionVal = firstIntVal / secondIntVal;
-                console.log(`divide (${value})`);
+                console.log(`divide (${OpVal})`);
                 break;
             default:
                 solutionVal = 0;
