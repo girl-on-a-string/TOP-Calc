@@ -21,17 +21,22 @@ btn = Array.from(btn); //so I can add an event listener later
 function btnClick (value) {
     if (isNaN(value)) { //if the value is not a number (operator)
         OpVal = value;
-        // console.log(`operator: ${OpVal}`);
-        operate(OpVal);
+        console.log(`operator: ${OpVal}`);
+        // operate(OpVal);
 
         if (value == "=") { 
             console.log("evaluate");
 
-            if (secondIntVal !== "") { //if second value exists, preform math
+            if (secondIntVal !== "" && firstIntVal !== "") { //if both values exist, preform math
                 isEqualsPressed = true;
+                operate(OpVal);
                 console.log(`solution: ${solutionVal}`);
             } else {
-                solutionDisplay.innerText = "Error: nothing to compute";
+                if (firstIntVal === "" || secondIntVal === "") {
+                    solutionDisplay.innerText = "Error: only one value";
+                } //else {
+                //     solutionDisplay.innerText = "Error: nothing to compute";
+                // }
             }
         }
 
@@ -94,6 +99,10 @@ function getValue2 (value) {
         secondIntVal = parseFloat(secondIntVal); //convert to number
     }
     console.log(`second val: ${secondIntVal}`);
+}
+
+function getOpVal (value) {
+    OpVal += value;
 }
 
 //section 4
