@@ -21,7 +21,7 @@ btn = Array.from(btn); //so I can add an event listener later
 function btnClick (value) {
     if (isNaN(value)) { //if the value is not a number (operator)
 
-        if (value == "+" || value == "-" || value == "x" || value == "/") {
+        if (value == "+" || value == "-" || value == "x" || value == "/") { //to use in operate ()
             OpVal = value;
         }
 
@@ -61,18 +61,23 @@ function btnClick (value) {
         }
 
         if (value == "+/-") { // sign conversion handling
-            if (firstIntVal == "") { //if first value is empty
-                signConversion(value);
-            } else { //if first value isn't empty
-                signConversion(value);
+            if (firstIntVal !== "" && secondIntVal == "")  { //convert first val
+                signConversion(firstIntVal);
+                console.log(`reversed ${firstIntVal}`);
             }
 
-            console.log("reverse");
+            if (secondIntVal !== "") { //convert second val
+                signConversion(secondIntVal);
+                console.log(`reversed ${secondIntVal}`);
+            }
+
+            // console.log("reversed");
         }
 
-        if (value == "←") {
+        if (value == "←") { // delete by one value
             let displayLength = problemDisplay.innerText;
-            displayLength.slice(0, displayLength.length - 1);
+            toString(displayLength);
+            displayLength.substring(0, displayLength.length - 1);
             console.log("backspace");
         }
 
@@ -138,22 +143,24 @@ function operate (OpVal) {
     }
 }
 
-function signConversion (value) {
-    let double = value * 2;
+//convert signs
 
-    if (value > 0) { //convert to negative
-        value = value - double;
-    } 
+function signConversion (a) {
+    let double = a * 2;
 
-    if (value < 0) { //convert to positive
-        value = value + double;
+    //convert to positive
+
+    if (a < 0) {
+        a = a + double;
+        console.log(`converted ${a} to positive`);
     }
 
-    if (value === "0") { //do nothing if it's zero
-        return;
-    }
+    //convert to negative
 
-    console.log(`reversed: ${value}`);
+    if (a > 0) {
+        a = a * -1;
+        console.log(`converted ${a} to negative`);
+    }
 }
 
 //section 5
