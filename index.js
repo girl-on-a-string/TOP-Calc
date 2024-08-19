@@ -20,9 +20,11 @@ btn = Array.from(btn); //so I can add an event listener later
 
 function btnClick (value) {
     if (isNaN(value)) { //if the value is not a number (operator)
-        OpVal = value;
         console.log(`operator: ${OpVal}`);
-        // operate(OpVal);
+
+        if (value == "+" || value == "-" || value == "x" || value == "/") {
+            OpVal = value;
+        }
 
         if (value == "=") { 
             console.log("evaluate");
@@ -34,8 +36,10 @@ function btnClick (value) {
             } else {
                 if (firstIntVal === "" || secondIntVal === "") {
                     solutionDisplay.innerText = "Error: only one value";
-                } //else {
-                //     solutionDisplay.innerText = "Error: nothing to compute";
+                } 
+
+                // if (isNaN(value) > 2) {
+                //     solutionDisplay.innerText = "Error: too many operators";
                 // }
             }
         }
@@ -101,16 +105,14 @@ function getValue2 (value) {
     console.log(`second val: ${secondIntVal}`);
 }
 
-function getOpVal (value) {
-    OpVal += value;
-}
-
 //section 4
 //operator handling
 
 function operate (OpVal) {
-    console.log(firstIntVal, typeof(firstIntVal));
-    console.log(secondIntVal, typeof(secondIntVal));
+    // console.log(firstIntVal, typeof(firstIntVal));
+    // console.log(secondIntVal, typeof(secondIntVal));
+
+    console.log(OpVal);
 
     if (firstIntVal !== "" && secondIntVal !== "") {
         switch (OpVal) {
@@ -185,4 +187,5 @@ btn.forEach(btn => {
         display(value);
     })
 });
+
 
