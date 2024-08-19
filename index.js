@@ -71,6 +71,10 @@ function btnClick (value) {
                 console.log(`reversed ${secondIntVal}`);
             }
 
+            if (solutionVal !== 0) { //don't do anything if solution is present
+                return;
+            }
+
             // console.log("reversed");
         }
 
@@ -168,14 +172,20 @@ function signConversion (a) {
 
 function display () {
     if (isEqualsPressed == false) { //problem display
-        if (value !== "AC") {
+        if (value !== "AC" && value !== "←" && value !== "+/-") {
             problemDisplay.innerText += value;
+        }
+
+        if (value === "←" || value === "+/-") {
+            return;
         }
     }
 
     if (isEqualsPressed == true) { //solution display
         solutionDisplay.innerText = solutionVal;
     }
+
+
 }
 
 //section 6
