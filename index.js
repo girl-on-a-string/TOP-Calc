@@ -81,6 +81,20 @@ function btnClick (value) {
             toString(displayLength);
             displayLength = displayLength.substring(0, displayLength.length - 1);
             problemDisplay.innerText = displayLength;
+
+            if (displayLength.charAt(0) === "") {
+                solutionDisplay.innerText = "";
+                problemDisplay.innerText = "";
+
+                firstIntVal = "";
+                secondIntVal = "";
+                OpVal = "";
+
+                isEqualsPressed = false;
+
+                console.log("cleared");
+            }
+
             console.log("backspace");
             console.log(`result: ${displayLength}`);
         }
