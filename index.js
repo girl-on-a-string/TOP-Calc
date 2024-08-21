@@ -74,15 +74,15 @@ function btnClick (value) {
             if (solutionVal !== 0) { //don't do anything if solution is present
                 return;
             }
-
-            // console.log("reversed");
         }
 
         if (value == "←") { // delete by one value
             let displayLength = problemDisplay.innerText;
             toString(displayLength);
-            displayLength.substring(0, displayLength.length - 1);
+            displayLength = displayLength.substring(0, displayLength.length - 1);
+            problemDisplay.innerText = displayLength;
             console.log("backspace");
+            console.log(`result: ${displayLength}`);
         }
 
     } else { //if the number is an integer
@@ -117,7 +117,7 @@ function getValue2 (value) {
 //operator handling
 
 function operate (OpVal) {
-    if (firstIntVal !== "" && secondIntVal !== "") {
+    if (firstIntVal !== "" && secondIntVal !== "" || solutionVal !== 0) {
         switch (OpVal) {
             case "+":
                 solutionVal = firstIntVal + secondIntVal;
