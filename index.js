@@ -9,6 +9,7 @@ let firstIntVal = ""; //stores first inputted number
 let secondIntVal = ""; //stores second inputted number
 let OpVal = ""; //stores inputted operator
 let solutionVal = 0; //stores the solution of the problem
+let buffer = ""; //stores third value temporarily
 
 let isEqualsPressed = false;
 
@@ -27,16 +28,7 @@ function btnClick (value) {
 
         if (value == "=") { 
             console.log(`evaluate (${value})`);
-
-            if (secondIntVal !== "" && firstIntVal !== "") { //if both values exist, preform math
-                isEqualsPressed = true;
-                operate(OpVal);
-                console.log(`solution: ${solutionVal}`);
-            } else {
-                if (firstIntVal === "" || secondIntVal === "") {
-                    solutionDisplay.innerText = "Error: only one value";
-                } 
-            }
+            isEqualsPressed = true;
         }
 
         if (value == "AC") { //clear the display, reset everything
@@ -77,31 +69,30 @@ function btnClick (value) {
         }
 
         if (value == "←") { // delete by one value
-            let displayLength = problemDisplay.innerText;
-            toString(displayLength);
-            displayLength = displayLength.substring(0, displayLength.length - 1);
-            problemDisplay.innerText = displayLength;
-
-            if (displayLength.charAt(0) === "") {
-                solutionDisplay.innerText = "";
-                problemDisplay.innerText = "";
-
-                firstIntVal = "";
-                secondIntVal = "";
-                OpVal = "";
-
-                isEqualsPressed = false;
-
-                console.log("cleared");
+            if (firstIntVal !== "" && secondIntVal === "") { //deleting first int val
+                backspace(firstIntVal);
+                console.log("editing first val");
             }
 
-            console.log("backspace");
-            console.log(`result: ${displayLength}`);
+            if (secondIntVal !== "") { //deleting second int val
+                backspace(secondIntVal);
+                console.log("editing second val");
+            }
+
+            if (OpVal !== "") { //deleting operator
+                backspace(secondIntVal);
+                console.log("editing operator");
+            }
         }
 
     } else { //if the number is an integer
         getValue1(value);
         getValue2(value);
+
+        if (firstIntVal !== "" && secondIntVal !== "" && OpVal !== "") { // calculate the value the second each number is inputted, and only display once = is pressed
+            operate(OpVal);
+            console.log(`solution: ${solutionVal}`);
+        }
     }
 }
 
@@ -125,6 +116,14 @@ function getValue2 (value) {
         secondIntVal = parseFloat(secondIntVal); //convert to number
     }
     console.log(`second val: ${secondIntVal}`);
+}
+
+function thirdValueHandling(value) { //for operations with over two integers. ex: 8+8+8 or 9+9+9+9
+    if (firstIntVal !== "" && secondIntVal !== "" && OpVal !== "") {
+        buffer += value;
+        buffer = parseFloat(buffer); //convert to number
+        console.log(`buffer val: ${buffer}`);
+    }
 }
 
 //section 4
@@ -179,6 +178,38 @@ function signConversion (a) {
         a = a * -1;
         console.log(`converted ${a} to negative`);
     }
+}
+
+//backspace
+
+function backspace(a) {
+    let displayLength = problemDisplay.innerText;
+    toString(displayLength);
+    
+    displayLength = displayLength.substring(0, displayLength.length - 1);
+    problemDisplay.innerText = displayLength;
+
+    a = toString(a);
+    a = a.substring(0, a.length - 1);
+
+    if (displayLength.charAt(0) === "") { // reset if you completely delete everything, just like AC btn
+        solutionDisplay.innerText = "";
+        problemDisplay.innerText = "";
+
+        firstIntVal = "";
+        secondIntVal = "";
+        OpVal = "";
+
+        isEqualsPressed = false;
+
+        console.log("cleared");
+    }
+
+    if (a !== "") {
+
+    }
+
+    console.log(`backspace result: ${a}`);
 }
 
 //section 5
