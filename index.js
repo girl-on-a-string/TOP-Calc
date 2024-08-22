@@ -9,7 +9,11 @@ let firstIntVal = ""; //stores first inputted number
 let secondIntVal = ""; //stores second inputted number
 let OpVal = ""; //stores inputted operator
 let solutionVal = 0; //stores the solution of the problem
-let buffer = ""; //stores third value temporarily
+
+let bufferNum = ""; //stores third value temporarily
+let bufferOp = ""; //stores second op val temporarily
+
+let score = 0; //tracks how many times op has been pressed
 
 let isEqualsPressed = false;
 
@@ -24,6 +28,8 @@ function btnClick (value) {
 
         if (value == "+" || value == "-" || value == "x" || value == "/") { //to use in operate ()
             OpVal = value;
+            score += 1;
+            console.log(`score = ${score}`);
         }
 
         if (value == "=") { 
@@ -38,6 +44,8 @@ function btnClick (value) {
             firstIntVal = "";
             secondIntVal = "";
             OpVal = "";
+
+            score = 0;
 
             isEqualsPressed = false;
 
@@ -88,6 +96,7 @@ function btnClick (value) {
     } else { //if the number is an integer
         getValue1(value);
         getValue2(value);
+        thirdValueHandling();
 
         if (firstIntVal !== "" && secondIntVal !== "" && OpVal !== "") { // calculate the value the second each number is inputted, and only display once = is pressed
             operate(OpVal);
@@ -111,18 +120,34 @@ function getValue1 (value) {
 }
 
 function getValue2 (value) {
-    if (OpVal !== "" && firstIntVal !== "") {
+    if (OpVal !== "" && firstIntVal !== "" && score < 2) {
         secondIntVal += value;
         secondIntVal = parseFloat(secondIntVal); //convert to number
     }
     console.log(`second val: ${secondIntVal}`);
 }
 
-function thirdValueHandling(value) { //for operations with over two integers. ex: 8+8+8 or 9+9+9+9
-    if (firstIntVal !== "" && secondIntVal !== "" && OpVal !== "") {
-        buffer += value;
-        buffer = parseFloat(buffer); //convert to number
-        console.log(`buffer val: ${buffer}`);
+//section 3.5
+//handling operations with over two integers. ex: 8+8+8 or 9+9+9+9
+
+function thirdValueHandling(value) { 
+    if (solutionVal !== "" && score > 1) {
+        firstIntVal = solutionVal;
+
+        OpVal = "";
+        secondIntVal = "";
+
+        // secondIntVal += value;
+        // parseFloat(secondIntVal);
+        // score = 0;
+
+        console.log(`NEW first int val: ${firstIntVal}`);
+
+        if (firstIntVal !== "" && OpVal !== "" && secondIntVal === "") { // store NEW second int val
+            secondIntVal += value;
+            parseFloat(secondIntVal);
+            console.log(`NEW second int val: ${secondIntVal}`);
+        }
     }
 }
 
