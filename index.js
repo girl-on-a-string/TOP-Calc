@@ -132,8 +132,6 @@ function getValue2 (value) {
 
 function thirdValueHandling(value) { 
     if (solutionVal !== "" && score > 1) {
-        // firstIntVal = solutionVal;
-
         OpVal = "";
         secondIntVal = "";
 
@@ -145,10 +143,6 @@ function thirdValueHandling(value) {
             firstIntVal += "";
             firstIntVal = parseFloat(firstIntVal);
         }
-
-        // secondIntVal += value;
-        // parseFloat(secondIntVal);
-        // score = 0;
 
         if (firstIntVal !== "") { // store NEW second int val
             secondIntVal += value;
@@ -177,7 +171,7 @@ function operate (OpVal) {
                 console.log(`multiply (${OpVal})`);
                 break;
             case "/":
-                if (secondIntVal === "0") { //division by 0 handling
+                if (secondIntVal == 0) { //division by 0 handling
                     solutionDisplay.innerText += "Error: Division by 0";
                     solutionVal = 0; //reset solution
                     return;
