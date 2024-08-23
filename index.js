@@ -96,7 +96,7 @@ function btnClick (value) {
     } else { //if the number is an integer
         getValue1(value);
         getValue2(value);
-        thirdValueHandling();
+        thirdValueHandling(value);
 
         if (firstIntVal !== "" && secondIntVal !== "" && OpVal !== "") { // calculate the value the second each number is inputted, and only display once = is pressed
             operate(OpVal);
@@ -132,21 +132,28 @@ function getValue2 (value) {
 
 function thirdValueHandling(value) { 
     if (solutionVal !== "" && score > 1) {
-        firstIntVal = solutionVal;
+        // firstIntVal = solutionVal;
 
         OpVal = "";
         secondIntVal = "";
+
+        if (secondIntVal === "") {
+            firstIntVal = solutionVal;
+            firstIntVal = parseFloat(firstIntVal);
+            console.log(`NEW first val: ${firstIntVal}`);
+        } else {
+            firstIntVal += "";
+            firstIntVal = parseFloat(firstIntVal);
+        }
 
         // secondIntVal += value;
         // parseFloat(secondIntVal);
         // score = 0;
 
-        console.log(`NEW first int val: ${firstIntVal}`);
-
-        if (firstIntVal !== "" && OpVal !== "" && secondIntVal === "") { // store NEW second int val
+        if (firstIntVal !== "") { // store NEW second int val
             secondIntVal += value;
             parseFloat(secondIntVal);
-            console.log(`NEW second int val: ${secondIntVal}`);
+            console.log(`NEW second val: ${secondIntVal}`);
         }
     }
 }
