@@ -62,18 +62,18 @@ function btnClick (value) {
         }
 
         if (value == "+/-") { // sign conversion handling
-            if (firstIntVal !== "" && secondIntVal == "")  { //convert first val
-                signConversion(firstIntVal);
-                console.log(`reversed ${firstIntVal}`);
-            }
-
-            if (secondIntVal !== "") { //convert second val
-                signConversion(secondIntVal);
-                console.log(`reversed ${secondIntVal}`);
-            }
-
-            if (solutionVal !== 0) { //don't do anything if solution is present
-                return;
+            if (solutionVal == 0) {
+                if (firstIntVal !== "" && secondIntVal == "")  { //convert first val
+                    signConversion(firstIntVal);
+                    console.log(`reversed ${firstIntVal}`);
+                }
+    
+                if (secondIntVal !== "") { //convert second val
+                    signConversion(secondIntVal);
+                    console.log(`reversed ${secondIntVal}`);
+                }
+            } else {
+                console.log("equation evaluated, nothing to do");
             }
         }
 
