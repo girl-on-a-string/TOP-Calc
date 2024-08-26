@@ -49,6 +49,7 @@ function btnClick (value) {
             score = 0;
 
             isEqualsPressed = false;
+            isThirdValue = false;
 
             console.log("Cleared");
         }
