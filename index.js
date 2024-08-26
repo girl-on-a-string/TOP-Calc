@@ -16,6 +16,7 @@ let bufferOp = ""; //stores second op val temporarily
 let score = 0; //tracks how many times op has been pressed
 
 let isEqualsPressed = false;
+let isThirdValue = false;
 
 let btn = document.getElementsByClassName("btn"); 
 btn = Array.from(btn); //so I can add an event listener later
@@ -94,9 +95,14 @@ function btnClick (value) {
         }
 
     } else { //if the number is an integer
-        getValue1(value);
-        getValue2(value);
-        thirdValueHandling(value);
+        if (isThirdValue == false) {
+            getValue1(value);
+            getValue2(value);
+        }
+
+        if (solutionVal !== 0) {
+            thirdValueHandling(value);
+        } 
 
         if (firstIntVal !== "" && secondIntVal !== "" && OpVal !== "") { // calculate the value the second each number is inputted, and only display once = is pressed
             operate(OpVal);
@@ -111,7 +117,7 @@ function btnClick (value) {
 function getValue1 (value) {
     if (OpVal == "" && secondIntVal == "") {
         firstIntVal += value;
-        firstIntVal = parseFloat(firstIntVal); //convert to number
+        firstIntVal = parseFloat(firstIntVal); //convert to number (instead of string)
     } else {
         firstIntVal += "";
         firstIntVal = parseFloat(firstIntVal);
@@ -122,7 +128,7 @@ function getValue1 (value) {
 function getValue2 (value) {
     if (OpVal !== "" && firstIntVal !== "" && score < 2) {
         secondIntVal += value;
-        secondIntVal = parseFloat(secondIntVal); //convert to number
+        secondIntVal = parseFloat(secondIntVal); //convert to number (instead of string)
     }
     console.log(`second val: ${secondIntVal}`);
 }
@@ -131,6 +137,8 @@ function getValue2 (value) {
 //handling operations with over two integers. ex: 8+8+8 or 9+9+9+9
 
 function thirdValueHandling(value) { 
+    isThirdValue = true;
+
     if (solutionVal !== "" && score > 1) {
         OpVal = "";
         secondIntVal = "";
@@ -138,13 +146,14 @@ function thirdValueHandling(value) {
         if (secondIntVal === "") {
             firstIntVal = solutionVal;
             firstIntVal = parseFloat(firstIntVal);
+            // solutionVal = 0;
             console.log(`NEW first val: ${firstIntVal}`);
         } else {
             firstIntVal += "";
             firstIntVal = parseFloat(firstIntVal);
         }
 
-        if (firstIntVal !== "") { // store NEW second int val
+        if (firstIntVal !== "" && OpVal !== "" && score > 2) { // store NEW second int val
             secondIntVal += value;
             parseFloat(secondIntVal);
             console.log(`NEW second val: ${secondIntVal}`);
@@ -255,8 +264,6 @@ function display () {
     if (isEqualsPressed == true) { //solution display
         solutionDisplay.innerText = solutionVal;
     }
-
-
 }
 
 //section 6
@@ -269,5 +276,4 @@ btn.forEach(btn => {
         display(value);
     })
 });
-
 
