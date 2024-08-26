@@ -62,7 +62,7 @@ function btnClick (value) {
         }
 
         if (value == "+/-") { // sign conversion handling
-            if (solutionVal == 0) {
+            if (isEqualsPressed === false) {
                 if (firstIntVal !== "" && secondIntVal == "")  { //convert first val
                     signConversion(firstIntVal);
                     console.log(`reversed ${firstIntVal}`);
