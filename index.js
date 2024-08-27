@@ -44,6 +44,7 @@ function btnClick (value) {
 
             firstIntVal = "";
             secondIntVal = "";
+            solutionVal = 0;
             OpVal = "";
 
             score = 0;
@@ -101,7 +102,9 @@ function btnClick (value) {
             getValue2(value);
         }
 
-        if (solutionVal !== 0) {
+        if (solutionVal !== 0 && score > 1) {
+            OpVal = "";
+            secondIntVal = "";
             thirdValueHandling(value);
         } 
 
@@ -140,25 +143,24 @@ function getValue2 (value) {
 function thirdValueHandling(value) { 
     isThirdValue = true;
 
-    if (solutionVal !== "" && score > 1) {
-        OpVal = "";
-        secondIntVal = "";
+    let isFirstVal = false;
 
-        if (secondIntVal === "") {
-            firstIntVal = solutionVal;
-            firstIntVal = parseFloat(firstIntVal);
-            // solutionVal = 0;
-            console.log(`NEW first val: ${firstIntVal}`);
-        } else {
-            firstIntVal += "";
-            firstIntVal = parseFloat(firstIntVal);
-        }
+    if (solutionVal !== 0) { //store NEW first int val
+        firstIntVal = solutionVal;
+        firstIntVal = parseFloat(firstIntVal);
+        // solutionVal = 0;
+        isFirstVal = true;
+        console.log("");
+        console.log(`NEW first val: ${firstIntVal}`);
+    } else {
+        firstIntVal += "";
+        firstIntVal = parseFloat(firstIntVal);
+    }
 
-        if (firstIntVal !== "" && OpVal !== "" && score > 2) { // store NEW second int val
-            secondIntVal += value;
-            parseFloat(secondIntVal);
-            console.log(`NEW second val: ${secondIntVal}`);
-        }
+    if (isFirstVal == true) { // store NEW second int val
+        secondIntVal += value;
+        parseFloat(secondIntVal);
+        console.log(`NEW second val: ${secondIntVal}`);
     }
 }
 
