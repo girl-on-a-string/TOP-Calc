@@ -103,8 +103,8 @@ function btnClick (value) {
         }
 
         if (solutionVal !== 0 && score > 1) {
-            OpVal = "";
-            secondIntVal = "";
+            // OpVal = "";
+            // secondIntVal = "";
             thirdValueHandling(value);
         } 
 
@@ -141,16 +141,16 @@ function getValue2 (value) {
 //handling operations with over two integers. ex: 8+8+8 or 9+9+9+9
 
 function thirdValueHandling(value) { 
+    secondIntVal = "";
+
     isThirdValue = true;
 
-    let isFirstVal = false;
+    let isFirstVal = false; //status of the new first value
 
     if (solutionVal !== 0) { //store NEW first int val
         firstIntVal = solutionVal;
         firstIntVal = parseFloat(firstIntVal);
-        // solutionVal = 0;
         isFirstVal = true;
-        console.log("");
         console.log(`NEW first val: ${firstIntVal}`);
     } else {
         firstIntVal += "";
@@ -159,7 +159,7 @@ function thirdValueHandling(value) {
 
     if (isFirstVal == true) { // store NEW second int val
         secondIntVal += value;
-        parseFloat(secondIntVal);
+        secondIntVal = parseFloat(secondIntVal);
         console.log(`NEW second val: ${secondIntVal}`);
     }
 }
